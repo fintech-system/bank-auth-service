@@ -1,4 +1,15 @@
 package kz.fintech.bank.auth.dto.response;
 
-public class AuthResponse {
+import java.time.Instant;
+import java.util.UUID;
+
+public record AuthResponse(
+        UUID userId,
+        String email,
+        String role,
+        String accessToken,
+        Instant accessTokenExpiresAt,
+        String refreshToken,
+        Instant refreshTokenExpiresAt
+) {
 }

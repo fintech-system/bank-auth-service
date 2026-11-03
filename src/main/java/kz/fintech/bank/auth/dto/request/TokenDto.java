@@ -1,4 +1,15 @@
 package kz.fintech.bank.auth.dto.request;
 
-public class RefreshTokenDto {
+import java.time.Instant;
+
+public final class TokenDto {
+
+    private TokenDto() {
+    }
+
+    public record IssuedRefreshToken(
+            String value,
+            Instant expiresAt
+    ) {
+    }
 }
