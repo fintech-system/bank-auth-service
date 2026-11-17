@@ -29,10 +29,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/api/auth/register",
-                                "/api/auth/login",
-                                "/api/auth/refresh",
-                                "/api/auth/logout",
+                                "/v1/auth/register",
+                                "/v1/auth/login",
                                 "/.well-known/jwks.json",
                                 "/actuator/health/**",
                                 "/actuator/info",

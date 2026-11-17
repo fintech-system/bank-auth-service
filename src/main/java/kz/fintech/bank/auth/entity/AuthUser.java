@@ -42,4 +42,24 @@ public class AuthUser {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
+    protected AuthUser() {
+    }
+
+    public AuthUser(
+            String firstName,
+            String lastName,
+            String email,
+            String passwordHash,
+            Role role,
+            AccountStatus status
+    ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.role = role;
+        this.status = status;
+        this.createdAt = Instant.now();
+    }
+
 }
