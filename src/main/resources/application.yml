@@ -1,6 +1,22 @@
 spring:
   application:
     name: bank-auth-service
+  datasource:
+    url: ${AUTH_DB_URL:jdbc:postgresql://localhost:5433/auth_db}
+    username: ${AUTH_DB_USERNAME:auth}
+    password: ${AUTH_DB_PASSWORD:auth}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  messages:
+    basename: messages,bank-common-messages
+  web:
+    locale: ru
+    locale-resolver: accept-header
 
 security:
   jwt:

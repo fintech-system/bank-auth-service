@@ -3,7 +3,6 @@ package kz.fintech.bank.auth.dto.request;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import kz.fintech.bank.auth.entity.enums.Role;
 
 import java.util.UUID;
 

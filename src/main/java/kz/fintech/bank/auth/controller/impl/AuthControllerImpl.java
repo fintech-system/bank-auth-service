@@ -1,13 +1,16 @@
 package kz.fintech.bank.auth.controller.impl;
 
 import kz.fintech.bank.auth.controller.AuthController;
+import kz.fintech.bank.auth.dto.request.AuthDto.RegisterRequest;
 import kz.fintech.bank.auth.dto.request.AuthDto.UserResponse;
 import kz.fintech.bank.auth.dto.request.AuthDto.LoginRequest;
 import kz.fintech.bank.auth.dto.response.AuthResponse;
 import kz.fintech.bank.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,8 +24,14 @@ public class AuthControllerImpl implements AuthController {
     }
 
     @Override
-    public UserResponse me(Authentication authentication, String authHeader) {
-        String token = authHeader.substring("Bearer ".length());
-        return authService.me(authentication.getName(), token);
+    public UserResponse me(Jwt jwt) {
+        return authService.me(UUID.fromString(jwt.getSubject()));
     }
+
+    @Override
+    public UserResponse register(RegisterRequest request) {
+        return authService.register(request);
+    }
+
+
 }
